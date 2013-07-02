@@ -11,6 +11,8 @@ package
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	import flash.utils.Dictionary;
+	import flash.utils.clearInterval;
+	import flash.utils.setInterval;
 	/**
 	 * ...
 	 * @author Roger
@@ -20,6 +22,9 @@ package
 		static public var instance:LevelManager;
 		public var player:Player;
 		var spriteList:Sprite = new Sprite();
+		var enemyController:EnemyController;
+		
+		var frameInt:Number = 0;
 		
 		public function LevelManager() 
 		{
@@ -38,15 +43,24 @@ package
 			player = new Player();
 			spriteList.addChild(player); 
 			player.Initialize();
+			enemyController = new EnemyController();
+			clearInterval(frameInt)
+			frameInt = setInterval(moveFrame, 1000);
 		}
 		
 		public function Update():void
 		{
 			for (var i:int = 0; i < spriteList.numChildren; i++)
 			{
-				var theSprite:VisibleObject = (VisibleObject)(spriteList.getChildAt(i));
+				var theSprite:GameObject = (GameObject)(spriteList.getChildAt(i));
 				theSprite.Update();
 			}
+		}
+		
+		public function moveFrame():void
+		{
+			trace("spawned");
+			enemyController.spawnEnemies();
 		}
 	}
 

@@ -23,7 +23,7 @@ package
 		
 		public function Main() 
 		{
-			trace("begin");
+			trace("begin");//starts here
 			instance = this;
 			currentGameState = "GAMEPLAY";
 			Initialize();

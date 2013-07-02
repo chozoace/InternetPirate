@@ -8,10 +8,10 @@ package
 	 * ...
 	 * @author Roger
 	 */
-	public class Player extends VisibleObject
+	public class Player extends GameObject
 	{
 		var currentClip:MovieClip;
-		var maxSpeed:int = 4;
+		var maxSpeed:int = 8;
 		public var clipWidth:int;
 		public var clipHeight:int;
 		var currentKeyState:KeyboardEvent;
@@ -24,7 +24,7 @@ package
 		
 		var canShoot:Boolean = true;
 		
-		public function Player()
+		public function Player() 
 		{
 			currentClip = new testPlayermc();
 			currentClip.stop();

@@ -5,7 +5,7 @@ package
 	 * ...
 	 * @author Roger
 	 */
-	public class Bullet extends VisibleObject
+	public class Bullet extends GameObject
 	{
 		var speed:int = 10;
 		public var canUpdate:Boolean = true;
@@ -22,7 +22,7 @@ package
 		{
 			this.x += speed;
 			
-			if (this.x > 650)
+			if (this.x > 640)
 				canUpdate = false;
 		}
 		
