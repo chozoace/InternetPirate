@@ -128,11 +128,9 @@ package
 		
 		public function shootBullet()
 		{
-			trace("shooting");
 			var makeNew:Boolean = true;
 			for (var i:int = 0; i < bulletList.numChildren; i++)
 			{
-				trace("reused bullet");
 				var theBullet:Bullet = (Bullet)(bulletList.getChildAt(i));
 				
 				if (theBullet.canUpdate == false)
@@ -144,8 +142,7 @@ package
 			}
 			if (makeNew)
 			{
-				trace("made bullet");
-				bulletList.addChild(new Bullet(this.x, this.y));
+				bulletList.addChild(new Bullet(this.x, this.y, 10, 0, null, 0, true));
 			}
 		}
 	}

@@ -6,7 +6,7 @@ package
 	 */
 	public class BasicEnemyMovement implements ITickable
 	{
-		var mySpeed:int = 8;
+		var mySpeed:int = 5;
 		var isDead:Boolean = false;
 		var myObject:GameObject;
 		
@@ -17,16 +17,16 @@ package
 		
 		public function Update():void
 		{
-			if (!isDead)
+			if (myObject._exists)
 			{
 				myObject.x -= mySpeed;
 				
 				if (myObject.x < -79)
 				{
-					isDead = true;
-					myObject._exists = false;
-				}
+					myObject.MakeInvisible();
+				}			
 			}
+			
 		}
 		
 	}

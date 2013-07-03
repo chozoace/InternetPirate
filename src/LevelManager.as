@@ -45,7 +45,7 @@ package
 			player.Initialize();
 			enemyController = new EnemyController();
 			clearInterval(frameInt)
-			frameInt = setInterval(moveFrame, 1000);
+			frameInt = setInterval(moveFrame, 2000);
 		}
 		
 		public function Update():void
@@ -59,7 +59,6 @@ package
 		
 		public function moveFrame():void
 		{
-			trace("spawned");
 			enemyController.spawnEnemies();
 		}
 	}

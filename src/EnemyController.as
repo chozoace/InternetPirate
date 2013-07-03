@@ -10,20 +10,20 @@ package
 		//for random numbers
 		//var randUint:uint = uint(Math.random() * 4);
 		//trace(randUint);
-		var basicEnemyList:Sprite = new Sprite();
+		var basicEnemyList:Array = new Array();
 		
 		public function EnemyController() 
 		{
-			trace("enemyController made");
+			
 		}
 		
 		public function spawnEnemies():void
 		{
 			var makeNew:Boolean = true;
-			for (var i:int = 0; i < basicEnemyList.numChildren; i++)
+			for (var i:int = 0; i < basicEnemyList.length; i++)
 			{
 				trace("enemy reused");
-				var theEnemy:BasicEnemy = (BasicEnemy)(basicEnemyList.getChildAt(i));
+				var theEnemy:BasicEnemy = (BasicEnemy)(basicEnemyList[i]);
 				
 				if (theEnemy._exists == false)
 				{
@@ -36,10 +36,10 @@ package
 			if (makeNew)
 			{
 				trace("enemy made");
-				var yPos:uint = uint(Math.random() * 480);
+				var yPos:uint = uint(Math.random() * 400);
 				var enemy:BasicEnemy = new BasicEnemy(new Enemymc(), 642, yPos);
 				LevelManager.Instance().spriteList.addChild(enemy);
-				//basicEnemyList.addChild(enemy);
+				basicEnemyList.push(enemy);
 			}
 		}
 	}

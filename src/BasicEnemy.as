@@ -14,8 +14,10 @@ package
 			this.x = xPos;
 			this.y = yPos;
 			enemyClass = enemyType;
-			super(new Visible(enemyType), new BasicEnemyMovement(this), new BasicShooting());
+			super(new Visible(enemyType), new BasicEnemyMovement(this), new BasicShooting(this));
 		}
+		
+		
 		
 	}
 

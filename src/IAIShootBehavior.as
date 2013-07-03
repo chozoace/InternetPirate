@@ -1,12 +1,14 @@
 package  
 {
+	import flash.events.TimerEvent;
 	/**
 	 * ...
 	 * @author Roger
 	 */
 	public interface IAIShootBehavior 
 	{
-		function shoot():void;
+		function shoot(event:TimerEvent):void;
+		function shootUpdate():void;
 	}
 
 }
