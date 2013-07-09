@@ -21,7 +21,7 @@ package
 			for (var i:int = 0; i < spriteList.numChildren; i++)
 			{
 				var object:GameObject = (GameObject)(spriteList.getChildAt(i));
-				if (myObject.hitTestObject(object) && object != LevelManager.Instance().player)
+				if (myObject.hitTestObject(object) && object != LevelManager.Instance().player && object != myObject)
 				{
 					object.MakeInvisible();
 					return true;

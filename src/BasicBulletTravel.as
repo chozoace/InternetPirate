@@ -23,9 +23,13 @@ package
 					myObject.x -= myObject.speed;
 				
 				if (myObject.x > 640)
-					myObject.canUpdate = false;
+				{
+					myObject.MakeInvisible();
+				}
 				else if (myObject.x < 0)
-					myObject.canUpdate = false;
+				{
+					myObject.MakeInvisible();
+				}
 					
 				if (myObject.CheckCollision(myObject))
 				{

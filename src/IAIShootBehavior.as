@@ -7,8 +7,9 @@ package
 	 */
 	public interface IAIShootBehavior 
 	{
-		function shoot(event:TimerEvent):void;
+		function shoot(event:TimerEvent = null):void;
 		function shootUpdate():void;
+		function isEnemyBullet():Boolean;
 	}
 
 }

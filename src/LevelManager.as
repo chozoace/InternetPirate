@@ -42,7 +42,7 @@ package
 			Main.Instance().addChild(spriteList);
 			player = new Player();
 			spriteList.addChild(player); 
-			player.Initialize();
+			//player.Initialize();
 			enemyController = new EnemyController();
 			clearInterval(frameInt)
 			frameInt = setInterval(moveFrame, 2000);

@@ -6,7 +6,7 @@ package
 	 * ...
 	 * @author Roger
 	 */
-	public class BasicShooting implements IAIShootBehavior
+	public class BasicGun implements IAIShootBehavior
 	{
 		var myObject:GameObject;
 		var fireRate:int = 1000;
@@ -15,12 +15,14 @@ package
 		var bulletList:Array = new Array();
 		var myTimer:Timer;
 		
-		public function BasicShooting(theObject:GameObject) 
+		public function BasicGun(theObject:GameObject) 
 		{
 			myObject = theObject;
-			myTimer = new Timer(fireRate);
-			myTimer.addEventListener(TimerEvent.TIMER, shoot);
-			myTimer.start();
+		}
+		
+		public function isEnemyBullet():Boolean
+		{
+			return false;
 		}
 		
 		public function shootUpdate():void
@@ -36,9 +38,9 @@ package
 				for (var i:int = 0; i < bulletList.length; i++)
 				{
 					var theBullet:Bullet = (Bullet)(bulletList[i]);
-					
 					if (theBullet._exists == false)
 					{
+						trace("reused");
 						theBullet.ReUse(myObject.x + 30, myObject.y + 30);
 						makeNew = false;
 						break;
@@ -46,16 +48,14 @@ package
 				}
 				if (makeNew)
 				{
-					var newBullet:Bullet = new Bullet(myObject.x, myObject.y, bulletSpeed, damage, new Bullet2mc(), 1);
+					trace("madenew");
+					var newBullet:Bullet = new Bullet(myObject.x, myObject.y, bulletSpeed, damage, null, 0, true);
 					bulletList.push(newBullet);
 					LevelManager.Instance().spriteList.addChild(newBullet);
 				}
 			}
 		}
 		
-		public function isEnemyBullet():Boolean
-		{
-			return true;
-		}
 	}
+
 }

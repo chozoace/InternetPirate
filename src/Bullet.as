@@ -28,7 +28,6 @@ package
 			else
 				myClip = theClip;
 			this.addChild(myClip);
-			//is visible = yes, tickable = yes, shootPattern = null, collidable = vsPlayer
 			if(!vsEnemy)
 				collisionType = new CollideVsPlayer(this);
 			else if (vsEnemy)
@@ -41,7 +40,7 @@ package
 		{
 			this.x = xPos + 30;
 			this.y = yPos + 30;
-			canUpdate = true;
+			this._exists = true;
 		}
 		
 	}

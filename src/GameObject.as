@@ -49,8 +49,8 @@ package
 		
 		public function Shoot():void
 		{
-			//if (_s != null)
-				//_s.shoot();
+			if (!_s.isEnemyBullet())
+				_s.shoot();
 		}
 		
 		public function Update():void
@@ -73,7 +73,6 @@ package
 			this.y = yPos;
 			this.Draw();
 			_exists = true;
-			
 		}
 		
 	}
