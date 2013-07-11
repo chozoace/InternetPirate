@@ -22,7 +22,7 @@ package
 				else
 					myObject.x -= myObject.speed;
 				
-				if (myObject.x > 640)
+				if (myObject.x > 800)
 				{
 					myObject.MakeInvisible();
 				}

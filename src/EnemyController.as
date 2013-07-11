@@ -23,16 +23,16 @@ package
 				
 				if (theEnemy._exists == false)
 				{
-					var YPos:uint = uint(Math.random() * 480);
-					theEnemy.ReUse(642, YPos);
+					var YPos:uint = uint(Math.random() * 580);
+					theEnemy.ReUse(800, YPos);
 					makeNew = false;
 					break;
 				}
 			}
 			if (makeNew)
 			{
-				var yPos:uint = uint(Math.random() * 400);
-				var enemy:BasicEnemy = new BasicEnemy(new Enemymc(), 642, yPos);
+				var yPos:uint = uint(Math.random() * 580);
+				var enemy:BasicEnemy = new BasicEnemy(new Enemymc(), 800, yPos);
 				LevelManager.Instance().spriteList.addChild(enemy);
 				basicEnemyList.push(enemy);
 			}

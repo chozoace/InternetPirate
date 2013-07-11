@@ -40,7 +40,6 @@ package
 					var theBullet:Bullet = (Bullet)(bulletList[i]);
 					if (theBullet._exists == false)
 					{
-						trace("reused");
 						theBullet.ReUse(myObject.x + 30, myObject.y + 30);
 						makeNew = false;
 						break;
@@ -48,7 +47,6 @@ package
 				}
 				if (makeNew)
 				{
-					trace("madenew");
 					var newBullet:Bullet = new Bullet(myObject.x, myObject.y, bulletSpeed, damage, null, 0, true);
 					bulletList.push(newBullet);
 					LevelManager.Instance().spriteList.addChild(newBullet);

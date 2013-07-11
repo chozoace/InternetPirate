@@ -22,7 +22,6 @@ package
 		var _t:ITickable;
 		var _s:IAIShootBehavior;
 		var _c:ICollision;
-		var _g:IGunBehavior;
 		protected var health:int;
 		public var _exists:Boolean = true;
 		
