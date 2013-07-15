@@ -22,6 +22,8 @@ package
 		var _t:ITickable;
 		var _s:IAIShootBehavior;
 		var _c:ICollision;
+		var _sh:IShields;
+		var objectName:String;
 		protected var health:int;
 		public var _exists:Boolean = true;
 		
@@ -32,6 +34,11 @@ package
 			_s = s;
 			_c = c;
 			this.Draw();
+		}
+		
+		public function equipShields(s:IShields)
+		{
+			_sh = s;
 		}
 		
 		public function Draw():void
@@ -61,9 +68,29 @@ package
 			}
 		}
 		
-		public function CheckCollision(object:GameObject):Boolean
+		public function CheckCollisionWithSelf():Boolean
 		{
-			return _c.CheckCollision(object);
+			return _c.CheckCollisionWithSelf();
+		}
+		
+		public function CheckCollisionWithOther(theObject:GameObject):Boolean
+		{
+			return _c.CheckCollisionWithOther(theObject);
+		}
+		
+		public function returnCollidingObject():GameObject
+		{
+			return _c.returnCollidingObject();
+		}
+		
+		public function bulletHit(theBullet:Bullet):void
+		{
+			//_sh.onHit(theBullet.damage);
+			health -= theBullet.damage;
+			if (health <= 0)
+			{
+				MakeInvisible();
+			}
 		}
 		
 		public function ReUse(xPos:int, yPos:int):void

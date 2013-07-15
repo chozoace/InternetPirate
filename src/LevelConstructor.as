@@ -16,14 +16,13 @@ package
 	 */
 	public class LevelConstructor 
 	{
-		private var loader:Loader; // The bitmap loader
+		private var loader:Loader;
 		
-		private var xmlLoader:URLLoader; // for making the url request later
-		private var xml:XML; // loading the xml file in this property
-		private var screenBitmap:Bitmap; // for drawing the map
-		private var screenBitmapData:BitmapData; // data of an image, for drawing the map
-		private var tilesBitmapData:BitmapData; // data of a tile, which gets later into screenBitmapData
-		// following declerations are getting the values from the tmx file
+		private var xmlLoader:URLLoader; 
+		private var xml:XML; 
+		private var screenBitmap:Bitmap; 
+		private var screenBitmapData:BitmapData;
+		private var tilesBitmapData:BitmapData; 
 		private var spriteWidth:uint;
 		private var spriteHeight:uint;
 		private var tileWidth:uint;
@@ -33,8 +32,6 @@ package
 		private var tiles:Array = new Array();
 		// converting the tiles array into a multidimensional array later
 		private var tileCoordinates:Array = new Array();
-		
-		//var _levelHolder = new Sprite();
 		
 		public static var _instance:LevelConstructor;
 		
@@ -59,7 +56,6 @@ package
 			xmlLoader.addEventListener(Event.COMPLETE, xmlLoadComplete);
 			var request:URLRequest = new URLRequest(level);
 			xmlLoader.load(request);
-			trace("after load");
 		}
 		
 		public function xmlLoadComplete(e:Event):void
@@ -85,11 +81,10 @@ package
 					tileCoordinates[tileX][tileY] = tiles[(tileX+(tileY*spriteWidth))]//assigns info from tiles into the tilecoordinates array
 				}
 			}
-			trace("xml load complete");
 			tilesLoadInit();
 		}
 		
-		public function tilesLoadInit (/*e:Event*/):void
+		public function tilesLoadInit ():void
 		{
 			
 			var t:GameObject; 
@@ -104,35 +99,33 @@ package
 					var destY:int = spriteForY * tileWidth;
 					var destX:int = spriteForX * tileWidth;
 	
-					if ( tileCoordinates[spriteForX][spriteForY] == 1) //use this to determine what wall to make
+					if ( tileCoordinates[spriteForX][spriteForY] == 1) 
 					{
 						//nothing
 					}
-					if ( tileCoordinates[spriteForX][spriteForY] == 2) //use this to determine what wall to make
+					if ( tileCoordinates[spriteForX][spriteForY] == 2) 
 					{
 						t = new BasicEnemy(new Enemymc(), destX, destY);
 						LevelManager.Instance().spriteList.addChild(t);
 						//add to "t" to list
 					}
-					if ( tileCoordinates[spriteForX][spriteForY] == 3) //use this to determine what wall to make
+					if ( tileCoordinates[spriteForX][spriteForY] == 3)
 					{
 						//nothing
 					}
-					if ( tileCoordinates[spriteForX][spriteForY] == 4) //deathBlock
+					if ( tileCoordinates[spriteForX][spriteForY] == 4)
 					{
 						playerXPos = destX;
 						playerYPos = destY;
 						//add to "t" to list
 					}
-					if ( tileCoordinates[spriteForX][spriteForY] == 5) //levelChange
+					if ( tileCoordinates[spriteForX][spriteForY] == 5)
 					{
 						//nothing
 					}
 				}
 			}
-			LevelManager.Instance().createPlayer(playerXPos, playerYPos);
-			trace("tile load complete");
-			
+			LevelManager.Instance().createPlayer(playerXPos, playerYPos);			
 		}
 		
 		//public function loadTiles():void

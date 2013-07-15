@@ -16,6 +16,7 @@ package
 		
 		public function Bullet(xPos:int, yPos:int, theSpeed:int = 10, theDamage:int = 0, theClip:MovieClip = null, direction:int = 0, vEnemy = false ) 
 		{
+			objectName = "Bullet";
 			var collisionType:ICollision;
 			this.x = xPos + 30;
 			this.y = yPos + 30;

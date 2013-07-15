@@ -31,8 +31,13 @@ package
 					myObject.MakeInvisible();
 				}
 					
-				if (myObject.CheckCollision(myObject))
+				if (myObject.CheckCollisionWithSelf())
 				{
+					var target:GameObject = myObject.returnCollidingObject();
+					
+					if(target.objectName != "Bullet")
+						target.bulletHit(myObject);
+					
 					myObject.MakeInvisible();
 				}
 			}

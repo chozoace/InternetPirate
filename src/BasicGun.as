@@ -11,7 +11,7 @@ package
 		var myObject:GameObject;
 		var fireRate:int = 1000;
 		var bulletSpeed:int = 10;
-		var damage:int = 0;
+		var damage:int = 10;
 		var bulletList:Array = new Array();
 		var myTimer:Timer;
 		

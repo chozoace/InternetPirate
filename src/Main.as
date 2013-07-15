@@ -18,13 +18,17 @@ package
 	public class Main extends MovieClip
 	{
 		public static var instance:Main;
+		var gamePlayState:String = "GAMEPLAY";
+		var mainMenuState:String = "MAINMENU";
+		var pauseMenuState:String = "PAUSEMENU";
+		var mainMenu:MainMenu;
 		var currentGameState:String;
 		var levelManager:LevelManager;
 		
 		public function Main() 
 		{
 			instance = this;
-			currentGameState = "GAMEPLAY";
+			currentGameState = mainMenuState;
 			Initialize();
 		}
 		
@@ -35,15 +39,28 @@ package
 		
 		public function Initialize():void
 		{
-			levelManager = new LevelManager();
+			mainMenu = new MainMenu();
+			this.addChild(mainMenu);
+			mainMenu.createMainMenu();
 			this.addEventListener(Event.ENTER_FRAME, Update);
+		}
+		
+		public function createLevel()
+		{
+			this.removeChild(mainMenu);
+			levelManager = new LevelManager();
+			currentGameState = gamePlayState;
 		}
 		
 		public function Update(event:Event):void
 		{
-			if (currentGameState == "GAMEPLAY")
+			if (currentGameState == gamePlayState)
 			{
 				levelManager.Update();
+			}
+			else if (currentGameState == mainMenuState)
+			{
+				mainMenu.Update();
 			}
 		}
 	}

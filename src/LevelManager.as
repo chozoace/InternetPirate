@@ -22,6 +22,7 @@ package
 		static public var instance:LevelManager;
 		public var player:Player;
 		var background:Background;
+		var hud:MovieClip;
 		var spriteList:Sprite = new Sprite();
 		var enemyController:EnemyController;
 		var levelConstructor:LevelConstructor;
@@ -47,11 +48,19 @@ package
 			Main.Instance().addChild(spriteList);
 			levelConstructor = new LevelConstructor();
 			levelConstructor.LoadMap(testLevel);
+			hud = new TestHud();
+			hud.y = 608;
+			Main.Instance().addChild(hud);
 			
 			
 			//enemyController = new EnemyController();
 			//clearInterval(frameInt)
 			//frameInt = setInterval(moveFrame, 2000);
+		}
+		
+		public function moveFrame():void
+		{
+			enemyController.spawnEnemies();
 		}
 		
 		public function createPlayer(xPos:int, yPos:int)
@@ -69,11 +78,5 @@ package
 				theSprite.Update();
 			}
 		}
-		
-		public function moveFrame():void
-		{
-			enemyController.spawnEnemies();
-		}
 	}
-
 }

@@ -6,7 +6,9 @@ package
 	 */
 	public interface ICollision 
 	{
-			function CheckCollision(theObject:GameObject):Boolean;
+			function CheckCollisionWithOther(theObject:GameObject):Boolean;
+			function CheckCollisionWithSelf():Boolean;
+			function returnCollidingObject():GameObject;
 	}
 
 }
